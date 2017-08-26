@@ -23,24 +23,7 @@
 package com.uber.sdk.rides.client.services;
 
 import com.uber.sdk.rides.client.SessionConfiguration;
-import com.uber.sdk.rides.client.model.PaymentMethod;
-import com.uber.sdk.rides.client.model.PaymentMethodsResponse;
-import com.uber.sdk.rides.client.model.Place;
-import com.uber.sdk.rides.client.model.PlaceParameters;
-import com.uber.sdk.rides.client.model.PriceEstimatesResponse;
-import com.uber.sdk.rides.client.model.Product;
-import com.uber.sdk.rides.client.model.ProductsResponse;
-import com.uber.sdk.rides.client.model.Promotion;
-import com.uber.sdk.rides.client.model.Ride;
-import com.uber.sdk.rides.client.model.RideEstimate;
-import com.uber.sdk.rides.client.model.RideMap;
-import com.uber.sdk.rides.client.model.RideRequestParameters;
-import com.uber.sdk.rides.client.model.RideUpdateParameters;
-import com.uber.sdk.rides.client.model.SandboxProductRequestParameters;
-import com.uber.sdk.rides.client.model.SandboxRideRequestParameters;
-import com.uber.sdk.rides.client.model.TimeEstimatesResponse;
-import com.uber.sdk.rides.client.model.UserActivityPage;
-import com.uber.sdk.rides.client.model.UserProfile;
+import com.uber.sdk.rides.client.model.*;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -227,6 +210,16 @@ public interface RidesService {
      */
     @GET("/v1.2/requests/{request_id}")
     Call<Ride> getRideDetails(@Nonnull @Path("request_id") String rideId);
+
+    /**
+     * Gets request receipt.
+     *
+     * @param rideId The unique identifier for a ride.
+     *
+     * @return the request {@link Call}
+     */
+    @GET("/v1.2/requests/{request_id}/receipt")
+    Call<RideReceipt> getRideReceipt(@Nonnull @Path("request_id") String rideId);
 
     /**
      * <p>
